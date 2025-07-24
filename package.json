@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/tathankochi/-nodejs-pro-loc#readme",
   "dependencies": {
+    "dotenv": "16.4.7",
     "express": "5.0.1"
   },
   "devDependencies": {
