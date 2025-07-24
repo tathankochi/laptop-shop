@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/tathankochi/-nodejs-pro-loc/issues"
   },
-  "homepage": "https://github.com/tathankochi/-nodejs-pro-loc#readme"
+  "homepage": "https://github.com/tathankochi/-nodejs-pro-loc#readme",
+  "dependencies": {
+    "express": "5.0.1"
+  }
 }
