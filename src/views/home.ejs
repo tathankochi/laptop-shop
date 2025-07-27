@@ -39,7 +39,11 @@
                         <td>
                             <%= user.address %>
                         </td>
-                        <td><button class="btn btn-danger">Delete</button></td>
+                        <td>
+                            <form action="/handle-delete-user/<%= user.id %>" method="post">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     <% }) %>
             </tbody>

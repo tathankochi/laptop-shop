@@ -15,6 +15,20 @@ const handleCreateUser = async (fullName: string, email: string, address: string
     }
 }
 
+const handleDeleteUser = async (id: string) => {
+    const connection = await getConnection();
+    try {
+        const sql = 'DELETE FROM `users` WHERE `id` = ?';
+        const values = [id];
+
+        const [result, fields] = await connection.execute(sql, values);
+        return result;
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
+}
+
 const getAllUsers = async () => {
     const connection = await getConnection();
 
@@ -29,4 +43,6 @@ const getAllUsers = async () => {
         return [];
     }
 }
-export { handleCreateUser, getAllUsers }
+
+
+export { handleCreateUser, handleDeleteUser, getAllUsers }
