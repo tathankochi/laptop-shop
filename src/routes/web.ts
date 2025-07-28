@@ -1,9 +1,8 @@
 import express, { Express } from 'express';
 import { getCreateUserPage, getHomePage, getViewUser, postCreateUser, postDeleteUser, postUpdateUser } from 'controllers/user.controller';
 import { getDashboardPage, getAdminUserPage, getAdminOrderPage, getAdminProductPage } from 'controllers/admin/dashboard.controller';
+import fileUploadMiddleware from 'src/middleware/multer';
 
-const multer = require('multer')
-const upload = multer({ dest: 'uploads/' })
 const router = express.Router();
 
 const webRoutes = (app: Express) => {
@@ -19,9 +18,7 @@ const webRoutes = (app: Express) => {
     router.get("/admin/create-user", getCreateUserPage)
     router.get("/admin/order", getAdminOrderPage)
     router.get("/admin/product", getAdminProductPage)
-    router.post("/admin/handle-create-user", upload.single('avatar'), (req, res) => {
-        res.send("ok")
-    })
+    router.post("/admin/handle-create-user", fileUploadMiddleware("avatar"), postCreateUser)
     app.use("/", router);
 }
 
