@@ -18,61 +18,40 @@ const handleCreateUser = async (fullName: string, email: string, address: string
 }
 
 const handleDeleteUser = async (id: string) => {
-    const connection = await getConnection();
-    try {
-        const sql = 'DELETE FROM `users` WHERE `id` = ?';
-        const values = [id];
-
-        const [result, fields] = await connection.execute(sql, values);
-        return result;
-    } catch (err) {
-        console.log(err);
-        return [];
-    }
+    const result = await prisma.user.delete({
+        where: {
+            id: +id
+        }
+    });
+    return result;
 }
 
 const getAllUsers = async () => {
-    const connection = await getConnection();
-
-    try {
-        const [results, fields] = await connection.query(
-            'SELECT * FROM `user`'
-        );
-
-        return results;
-    } catch (err) {
-        console.log(err);
-        return [];
-    }
+    const users = await prisma.user.findMany();
+    return users;
 }
 
 const getUserById = async (id: string) => {
-    const connection = await getConnection();
-
-    try {
-        const sql = 'SELECT * FROM `users` WHERE `id` = ?';
-        const values = [id];
-
-        const [result, fields] = await connection.execute(sql, values);
-        return result[0];
-    } catch (err) {
-        console.log(err);
-        return [];
-    }
+    const user = await prisma.user.findUnique({
+        where: {
+            id: +id
+        }
+    });
+    return user;
 }
 
 const updateUserById = async (id: string, name: string, email: string, address: string) => {
-    const connection = await getConnection();
-    try {
-        const sql = 'UPDATE `users` SET `name` = ?, `email` = ?, `address` = ? WHERE `id` = ?';
-        const values = [name, email, address, id];
-
-        const [result, fields] = await connection.execute(sql, values);
-        return result;
-    } catch (err) {
-        console.log(err);
-        return [];
-    }
+    const updatedUser = await prisma.user.update({
+        data: {
+            name: name,
+            email: email,
+            address: address
+        },
+        where: {
+            id: +id
+        }
+    });
+    return updatedUser;
 }
 
 
