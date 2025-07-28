@@ -31,14 +31,34 @@
                                     </h5>
                                     <form action="/handle-create-user" method="post">
                                         <div class="mb-3">
-                                            <label class="form-label">Name</label>
+                                            <label class="form-label">Full name:</label>
                                             <input name="fullName" type="text" class="form-control"
                                                 placeholder="your name">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Email address</label>
-                                            <input name="email" type="email" class="form-control"
+                                            <label class="form-label">Email:</label>
+                                            <input name="username" type="email" class="form-control"
                                                 placeholder="name@example.com">
+                                        </div>
+                                        <div class="row">
+                                            <div class="mb-3 col-6">
+                                                <label class="form-label">Phone</label>
+                                                <input type="text" class="form-control" id="inputCity" name="phone">
+                                            </div>
+                                            <div class="mb-3 col-6">
+                                                <label class="form-label">Role</label>
+                                                <select id="inputState" class="form-select">
+                                                    <% roles.forEach((role,index)=> { %>
+                                                        <option value="<%-roles.id %>">
+                                                            <%- role.name %>
+                                                        </option>
+                                                        <%})%>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formFile" class="form-label">Avatar</label>
+                                            <input class="form-control" type="file" id="formFile">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Address</label>
