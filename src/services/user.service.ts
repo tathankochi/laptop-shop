@@ -6,9 +6,11 @@ const handleCreateUser = async (fullName: string, email: string, address: string
     try {
         await prisma.user.create({
             data: {
-                name: fullName,
-                email: email,
-                address: address
+                fullName: fullName,
+                username: "",
+                password: "",
+                address: address,
+                accountType: ""
             },
         })
     } catch (err) {
@@ -43,9 +45,11 @@ const getUserById = async (id: string) => {
 const updateUserById = async (id: string, name: string, email: string, address: string) => {
     const updatedUser = await prisma.user.update({
         data: {
-            name: name,
-            email: email,
-            address: address
+            fullName: name,
+            username: "",
+            password: "",
+            address: address,
+            accountType: ""
         },
         where: {
             id: +id
