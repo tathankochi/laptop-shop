@@ -9,8 +9,6 @@ const webRoutes = (app: Express) => {
     router.get("/", getHomePage)
 
     router.get("/create-user", getCreateUserPage)
-    router.get("/handle-view-user/:id", getViewUser)
-    router.post("/handle-delete-user/:id", postDeleteUser)
     router.post("/handle-update-user/", postUpdateUser)
     //admin routes
     router.get("/admin", getDashboardPage)
@@ -19,6 +17,8 @@ const webRoutes = (app: Express) => {
     router.get("/admin/order", getAdminOrderPage)
     router.get("/admin/product", getAdminProductPage)
     router.post("/admin/handle-create-user", fileUploadMiddleware("avatar"), postCreateUser)
+    router.post("/admin/delete-user/:id", postDeleteUser)
+    router.get("/admin/view-user/:id", getViewUser)
     app.use("/", router);
 }
 
