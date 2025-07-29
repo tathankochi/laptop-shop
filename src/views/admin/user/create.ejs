@@ -61,7 +61,7 @@
                                                 <label class="form-label">Role</label>
                                                 <select id="inputState" class="form-select" name="role">
                                                     <% roles.forEach((role,index)=> { %>
-                                                        <option value="<%-roles.id %>">
+                                                        <option value="<%- role.id %>">
                                                             <%- role.name %>
                                                         </option>
                                                         <%})%>

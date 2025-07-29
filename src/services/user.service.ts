@@ -7,7 +7,7 @@ const saltRounds = 10;
 const hashPassword = async (plainText: string) => {
     return await bcrypt.hash(plainText, saltRounds);
 }
-const handleCreateUser = async (fullName: string, email: string, address: string, phone: string, avatar: string) => {
+const handleCreateUser = async (fullName: string, email: string, address: string, phone: string, avatar: string, role: string) => {
     //Insert a new user
     try {
         const defaultPassword = await hashPassword("123456");
@@ -19,9 +19,11 @@ const handleCreateUser = async (fullName: string, email: string, address: string
                 address: address,
                 accountType: ACCOUNT_TYPE.SYSTEM,
                 avatar: avatar,
-                phone: phone
+                phone: phone,
+                roleId: +role
             },
         })
+        return newUser;
     } catch (err) {
         console.log(err);
         return [];
