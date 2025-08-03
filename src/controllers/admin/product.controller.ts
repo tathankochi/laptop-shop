@@ -74,4 +74,13 @@ const postUpdateProduct = async (req: Request, res: Response) => {
     return res.redirect("/admin/product");
 }
 
-export { getAdminCreateProductPage, postAdminCreateProductPage, postDeleteProduct, getViewProduct, postUpdateProduct };
+const getProductPage = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const product = await getProductById(id);
+
+    return res.render("client/product/detail.ejs", {
+        product
+    });
+}
+
+export { getAdminCreateProductPage, postAdminCreateProductPage, postDeleteProduct, getViewProduct, postUpdateProduct, getProductPage };
