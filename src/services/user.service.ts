@@ -1,4 +1,3 @@
-import getConnection from "config/database";
 import { prisma } from "config/client";
 import { ACCOUNT_TYPE } from "config/constant";
 import bcrypt from "bcrypt";
