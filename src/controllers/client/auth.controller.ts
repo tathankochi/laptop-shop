@@ -2,7 +2,11 @@ import { Request, Response } from "express";
 import { registerNewUser } from "services/client/auth.service";
 import { RegisterSchema, TRegisterSchema } from "src/validation/register.schema";
 const getLoginPage = (req: Request, res: Response) => {
-    return res.render("client/auth/login.ejs");
+    const { session } = req as any;
+    const messages = session?.messages ?? [];
+    return res.render("client/auth/login.ejs", {
+        messages
+    });
 }
 
 const getRegisterPage = (req: Request, res: Response) => {
@@ -41,4 +45,13 @@ const postRegister = async (req: Request, res: Response) => {
     await registerNewUser(fullName, email, password);
     return res.redirect("/login");
 }
-export { getLoginPage, getRegisterPage, postRegister };
+
+const getSuccessRedirectPage = (req: Request, res: Response) => {
+    const user = req.user as any;
+    if (user?.role?.name === "ADMIN") {
+        res.redirect("/admin")
+    }
+    else
+        res.redirect("/")
+}
+export { getLoginPage, getRegisterPage, postRegister, getSuccessRedirectPage };

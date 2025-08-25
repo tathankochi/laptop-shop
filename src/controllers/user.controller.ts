@@ -3,6 +3,8 @@ import { getProducts } from "services/client/item.service";
 import { getAllRoles, getAllUsers, getUserById, handleCreateUser, handleDeleteUser, updateUserById } from "services/user.service";
 const getHomePage = async (req: Request, res: Response) => {
     const products = await getProducts();
+    const user = req.user;
+    console.log("🚀 ~ getHomePage ~ user:", user);
     return res.render("client/home/show.ejs", {
         products
     });
