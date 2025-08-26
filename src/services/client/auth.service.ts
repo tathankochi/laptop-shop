@@ -71,6 +71,6 @@ const handleLogin = async (username: string, password: string, callback: any) =>
         //throw new Error(`Invalid password`);
         return callback(null, false, { message: `Username/password invalid` });
     }
-    return callback(null, user);
+    return callback(null, user as any);
 }
 export { isEmailExist, registerNewUser, handleLogin, getUserWithRoleById };
