@@ -187,31 +187,4 @@ prisma/
 4. **Session Management** - Quản lý session với Prisma Session Store
 5. **Input Validation** - Validation dữ liệu đầu vào với Zod
 6. **Error Handling** - Xử lý lỗi chuyên nghiệp
-7. **SEO Friendly** - Tối ưu hóa cho công cụ tìm kiếm
 
-## 🤝 Đóng góp
-
-Mọi đóng góp đều được chào đón! Vui lòng:
-
-1. Fork repository
-2. Tạo feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Mở Pull Request
-
-## 📄 License
-
-Dự án này được phân phối dưới ISC License. Xem file `LICENSE` để biết thêm chi tiết.
-
-## 👨‍💻 Tác giả
-
-**tathan** - [GitHub](https://github.com/tathankochi)
-
-## 📞 Liên hệ
-
-- GitHub Issues: [Tạo issue mới](https://github.com/tathankochi/-laptop-shop/issues)
-- Email: tathankochi@gmail.com
-
----
-
-⭐ Nếu dự án này hữu ích, hãy cho một star nhé!
