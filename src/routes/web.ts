@@ -6,6 +6,7 @@ import { getAdminCreateProductPage, getProductPage, getViewProduct, postAdminCre
 import { getLoginPage, getRegisterPage, getSuccessRedirectPage, postLogout, postRegister } from 'controllers/client/auth.controller';
 import passport from 'passport';
 import { isAdmin, isLogin } from 'src/middleware/auth';
+import { getCartPage, postAddProductToCart } from 'controllers/client/product.controller';
 
 const router = express.Router();
 
@@ -23,6 +24,9 @@ const webRoutes = (app: Express) => {
 
     router.get("/register", getRegisterPage);
     router.post("/register", postRegister);
+
+    router.post("/add-product-to-cart/:id", postAddProductToCart);
+    router.get("/cart", getCartPage);
 
     router.get("/create-user", getCreateUserPage);
     //admin routes
